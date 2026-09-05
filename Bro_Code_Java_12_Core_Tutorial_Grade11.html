@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="基于 Bro Code Java Full Course 的 Grade 11 Java 12 核心知识点独立教程。">
+<title>Bro Code Java · Grade 11 · 12 Core Lessons</title>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+<style>
+:root{--bg:#f3f6fb;--panel:#fff;--soft:#edf2f8;--ink:#182235;--muted:#657287;--line:#d7e0eb;--blue:#1761d9;--green:#087b68;--amber:#9a6200;--red:#b12f49;--purple:#6a4acb;--code:#07111f;--codeink:#e9f1fb;--side:304px;--shadow:0 14px 42px rgba(25,47,83,.09)}html[data-theme="dark"]{--bg:#09111c;--panel:#111b29;--soft:#192638;--ink:#eef4fc;--muted:#a6b1c2;--line:#2a3a4f;--blue:#81aaff;--green:#59d1b9;--amber:#ffca70;--red:#ff899c;--purple:#bca7ff;--code:#050a12;--codeink:#edf4ff;--shadow:none}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:72px}body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.72 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}button{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:7px 10px;cursor:pointer}.app{display:grid;grid-template-columns:var(--side) minmax(0,1fr);min-height:100vh;transition:.2s}.app.collapsed{--side:0}.sidebar{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);z-index:30;transition:.2s}.collapsed .sidebar{transform:translateX(-100%);opacity:0;pointer-events:none}.brand{padding:21px 18px 14px;border-bottom:1px solid var(--line)}.brand b{display:block}.brand small{display:block;margin-top:4px;color:var(--muted);font-size:11px}.track{height:4px;margin-top:12px;border-radius:8px;background:var(--soft);overflow:hidden}.track span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),var(--green));transition:.2s}.nav{padding:10px 9px 28px}.nav-label{padding:10px 9px 4px;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.nav a{display:flex;gap:8px;padding:7px 9px;border-radius:8px;color:var(--ink);font-size:12.5px;line-height:1.35}.nav a:hover,.nav a.active{background:var(--soft);color:var(--blue);text-decoration:none}.nav .n{width:22px;color:var(--muted);font-variant-numeric:tabular-nums}.workspace{min-width:0}.topbar{position:sticky;top:0;z-index:20;height:58px;display:flex;align-items:center;gap:9px;padding:0 18px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px)}.top-title{font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.spacer{flex:1}.meta{font-size:12px;color:var(--muted)}.kbd{padding:0 5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:var(--panel);font-size:10px}.content{max-width:1120px;margin:auto;padding:38px 44px 90px}.hero{position:relative;overflow:hidden;padding:48px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--blue) 12%,var(--panel)),var(--panel) 58%,color-mix(in srgb,var(--green) 9%,var(--panel)));box-shadow:var(--shadow)}.hero:after{content:"JAVA";position:absolute;right:22px;top:-22px;color:color-mix(in srgb,var(--blue) 7%,transparent);font-size:126px;font-weight:950;letter-spacing:-.08em}.kicker{position:relative;z-index:1;color:var(--blue);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.hero h1{position:relative;z-index:1;margin:9px 0 14px;max-width:820px;font-size:clamp(36px,5vw,58px);line-height:1.06;letter-spacing:-.045em}.lead{position:relative;z-index:1;max-width:850px;color:var(--muted);font-size:18px}.badges{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;margin-top:21px}.badge,.pill{display:inline-flex;padding:4px 9px;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-size:11px;font-weight:800}.stats,.grid2,.grid3,.grid4{display:grid;gap:14px}.stats{grid-template-columns:repeat(4,1fr);margin-top:22px}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}.stat,.card,.exercise{border:1px solid var(--line);border-radius:15px;background:var(--panel)}.stat{position:relative;z-index:1;padding:14px}.stat b{display:block;font-size:21px}.stat span{color:var(--muted);font-size:11px}.section{margin-top:48px;scroll-margin-top:74px}.lesson{margin-top:66px;padding-top:46px;border-top:1px solid var(--line);scroll-margin-top:74px}.lesson-head{display:grid;grid-template-columns:58px 1fr;gap:17px;align-items:start}.lesson-no{display:grid;place-items:center;width:58px;height:58px;border-radius:15px;background:var(--blue);color:#fff;font-size:20px;font-weight:900}.eyebrow{color:var(--blue);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}h2{margin:2px 0 6px;font-size:30px;line-height:1.2;letter-spacing:-.025em}h3{margin:30px 0 9px;font-size:21px;line-height:1.35}h4{margin:17px 0 7px;font-size:16px}p{margin:9px 0}.sub,.muted{color:var(--muted)}.small{font-size:12px}.card{padding:17px}.card h3,.card h4{margin-top:0}.callout{margin:17px 0;padding:14px 16px;border-left:4px solid var(--blue);border-radius:0 10px 10px 0;background:color-mix(in srgb,var(--blue) 7%,var(--panel))}.callout b{display:block;margin-bottom:3px}.callout.tip{border-color:var(--green);background:color-mix(in srgb,var(--green) 7%,var(--panel))}.callout.warn{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 8%,var(--panel))}.callout.danger{border-color:var(--red);background:color-mix(in srgb,var(--red) 7%,var(--panel))}.python{display:grid;grid-template-columns:145px 1fr;gap:13px;margin:14px 0}.python>div{padding:13px;border:1px solid var(--line);border-radius:11px;background:var(--panel)}.python>div:first-child{background:var(--soft);font-weight:850}.python small{display:block;margin-top:3px;color:var(--muted);font-weight:500}.table-wrap{margin:16px 0;overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{background:var(--soft);font-size:11px;letter-spacing:.03em}tr:last-child td{border-bottom:0}p code,li code,td code{padding:.08em .34em;border:1px solid var(--line);border-radius:5px;background:var(--soft);color:var(--ink);font:90% "SFMono-Regular",Consolas,monospace}pre[class*=language-],pre{margin:14px 0;padding:18px 20px;overflow:auto;border:1px solid #1c2b42;border-radius:12px;background:var(--code)!important;color:var(--codeink)!important;text-shadow:none;box-shadow:none;font:12.8px/1.65 "SFMono-Regular",Consolas,"Liberation Mono",monospace;white-space:pre}pre code{padding:0;border:0;background:transparent!important;color:inherit;text-shadow:none}.token.comment,.token.prolog,.token.doctype,.token.cdata{color:#7f8da3}.token.punctuation{color:#b8c5d8}.token.property,.token.tag,.token.boolean,.token.number,.token.constant,.token.symbol{color:#ffb86b}.token.selector,.token.attr-name,.token.string,.token.char,.token.builtin{color:#84e1bc}.token.operator,.token.entity,.token.url{color:#8fb5ff}.token.atrule,.token.attr-value,.token.keyword{color:#c8a7ff}.token.function,.token.class-name{color:#76d5ff}.token.regex,.token.important,.token.variable{color:#ff92a8}.exercise{margin-top:27px;padding:22px;border-color:color-mix(in srgb,var(--green) 45%,var(--line));background:linear-gradient(135deg,color-mix(in srgb,var(--green) 7%,var(--panel)),var(--panel))}.exercise-label{color:var(--green);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.exercise h3{margin:3px 0 7px}.spec{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:14px}.spec>div{padding:13px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}.spec b{display:block;margin-bottom:3px;font-size:12px}.accept{list-style:none;padding:0;margin:14px 0 0}.accept li{position:relative;margin:6px 0;padding-left:27px}.accept li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:900}.check{display:flex;align-items:center;gap:9px;margin-top:20px;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:var(--soft)}.check input{width:18px;height:18px;accent-color:var(--green)}.check label{font-weight:800;cursor:pointer}details.quiz{margin:16px 0;border:1px solid var(--line);border-radius:11px;background:var(--panel)}details.quiz summary{cursor:pointer;padding:12px 15px;font-weight:800}details.quiz>div{padding:0 15px 14px;color:var(--muted)}.tight li{margin:3px 0}.coverage{font-size:12px;color:var(--muted)}.foot{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}.anchor{opacity:.25;font-size:.65em}@media(max-width:960px){.stats,.grid4{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr 1fr}.content{padding:30px 26px 70px}}@media(max-width:780px){.app{display:block}.sidebar{position:fixed;left:0;width:min(88vw,304px);transform:translateX(-105%);box-shadow:0 0 40px rgba(0,0,0,.2)}.app.mobile-open .sidebar{transform:translateX(0);opacity:1;pointer-events:auto}.content{padding:24px 16px 60px}.hero{padding:28px 22px}.hero:after{display:none}.stats,.grid2,.grid3,.grid4,.spec{grid-template-columns:1fr}.python{grid-template-columns:1fr}.lesson-head{grid-template-columns:46px 1fr}.lesson-no{width:46px;height:46px;font-size:17px}h2{font-size:25px}.meta{display:none}}@page{size:A4;margin:13mm 13mm 16mm}@media print{:root{--bg:#fff;--panel:#fff;--soft:#f2f4f7;--ink:#111827;--muted:#4b5563;--line:#d7dce4;--blue:#194da9;--green:#09685d;--shadow:none}body{background:#fff;font-size:9.7pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}.sidebar,.topbar,.check{display:none!important}.app{display:block}.content{max-width:none;padding:0}.hero{border:0;box-shadow:none;padding:7mm 0 5mm}.hero:after{display:none}.hero h1{font-size:27pt}.lead{font-size:11.5pt}.stats{grid-template-columns:repeat(4,1fr)}.section{margin-top:7mm}.lesson{break-before:page;margin-top:0;padding-top:0;border:0}.lesson h2{font-size:19pt}.lesson-head{grid-template-columns:12mm 1fr}.lesson-no{width:11mm;height:11mm;border-radius:3mm;font-size:12pt}.card,.exercise,.callout,.table-wrap,.python,details{break-inside:avoid}.grid3,.grid4{grid-template-columns:repeat(2,1fr)}pre[class*=language-],pre{white-space:pre-wrap;word-break:break-word;font-size:7.6pt;padding:10px 12px;background:#08111e!important;color:#eaf1fb!important}a{color:inherit;text-decoration:none}.anchor{display:none}details.quiz>div{display:block}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<aside class="sidebar" aria-label="教程目录"><div class="brand"><b>Bro Code Java · 12 Core</b><small>Grade 11 Independent Practice Edition</small><div class="track"><span id="bar"></span></div></div><nav class="nav" id="nav"><div class="nav-label">Start</div><a href="#overview"><span class="n">00</span><span>定位与学习方法</span></a><a href="#map"><span class="n">↔</span><span>71 节完整映射</span></a><div class="nav-label">Fundamentals</div><a href="#l01"><span class="n">01</span><span>变量、输入与运算</span></a><a href="#l02"><span class="n">02</span><span>字符串与条件判断</span></a><a href="#l03"><span class="n">03</span><span>循环与流程控制</span></a><a href="#l04"><span class="n">04</span><span>方法、重载与作用域</span></a><a href="#l05"><span class="n">05</span><span>数组与二维数组</span></a><div class="nav-label">Object-Oriented Java</div><a href="#l06"><span class="n">06</span><span>类、对象与构造器</span></a><a href="#l07"><span class="n">07</span><span>继承、抽象与接口</span></a><a href="#l08"><span class="n">08</span><span>多态与对象关系</span></a><div class="nav-label">Practical Java</div><a href="#l09"><span class="n">09</span><span>包装类与 ArrayList</span></a><a href="#l10"><span class="n">10</span><span>异常、文件与日期</span></a><a href="#l11"><span class="n">11</span><span>泛型、HashMap 与枚举</span></a><a href="#l12"><span class="n">12</span><span>匿名类、计时与线程</span></a><a href="#appendix"><span class="n">A</span><span>运行方法与总测验</span></a></nav></aside>
+<div class="workspace"><header class="topbar"><button id="menu" type="button" aria-label="收起或展开目录">☰</button><div class="top-title">Bro Code Java · Grade 11 Tutorial</div><div class="spacer"></div><span class="meta" id="progress">0 / 12 完成</span><button id="theme" type="button" aria-label="切换主题">◐</button><button type="button" onclick="window.print()"><span class="kbd">Ctrl</span> + P</button></header>
+<main class="content">
+<section class="hero" id="top"><div class="kicker">Bro Code Java Full Course · 71 Sections Reframed</div><h1>Grade 11 Java<br>十二个核心知识点</h1><p class="lead">面向已经学过 Python、只接触过少量 Java 的学生。教程保留 Bro Code 从“先运行起来”到 OOP、集合、文件与多线程的实践路线，并把 71 个小节重组为 12 个独立知识单元。每章示例和课后练习均可单独完成，不涉及科研项目，也不存在前后作业依赖。</p><div class="badges"><span class="badge">Java 21 Compatible</span><span class="badge">Python → Java Bridge</span><span class="badge">12 Independent Exercises</span><span class="badge">Complete Runnable Examples</span><span class="badge">MathJax SVG</span></div><div class="stats"><div class="stat"><b>71</b><span>原课程小节纳入映射</span></div><div class="stat"><b>12</b><span>独立核心知识单元</span></div><div class="stat"><b>24–36 h</b><span>建议学习总时长</span></div><div class="stat"><b>0</b><span>科研或连续项目依赖</span></div></div></section>
+
+<section class="section" id="overview"><h2>00 · 如何使用这份教程 <a class="anchor" href="#overview">#</a></h2><div class="grid2"><div class="card"><h3>适合谁</h3><p>能够读懂 Python 的变量、<code>if</code>、循环和函数；知道一点 Java 语法，但还不能稳定地从空文件写出程序。每章按“概念 → Python 对照 → Java 示例 → 易错点 → 独立练习”展开。</p></div><div class="card"><h3>不包含什么</h3><p>没有体素寻路、科研指标、专利实验、复杂数据结构或连续工程作业。练习之间不共享类和文件；跳到任意一章，都可以在一个新目录中独立完成。</p></div></div><div class="callout tip"><b>推荐节奏</b>先观看对应视频小节，再阅读本章；关闭教程手写示例；故意修改一处观察错误；最后独立完成练习。每个知识点建议用 2–3 小时，不追求一次记住全部 API。</div><h3>最小运行环境</h3><pre><code class="language-bash">java -version                 # 建议 JDK 21；示例也兼容常见现代 JDK
+javac Main.java               # 编译
+java Main                     # 运行
+
+# 文件名必须与 public class Main 对应：Main.java</code></pre><div class="callout warn"><b>课程对齐说明</b>本教程依据用户提供的 Bro Code “Java Full Course for free”视频及其公开的 71 节目录重新组织，示例为独立编写，不是视频字幕或源代码的逐字复制。</div></section>
+
+<section class="section" id="map"><h2>71 个视频小节 → 12 个知识点 <a class="anchor" href="#map">#</a></h2><div class="table-wrap"><table><thead><tr><th>知识点</th><th>覆盖视频小节</th><th>主题与项目</th></tr></thead><tbody><tr><td>01</td><td>#1–6、#8–11</td><td>Java、variables、input、Mad Libs、arithmetic、shopping cart、random、Math、printf、compound interest</td></tr><tr><td>02</td><td>#7、#12–20</td><td>if/nested if、String、substring、weight/temperature converter、ternary、switch、calculator、logical operators</td></tr><tr><td>03</td><td>#21–25</td><td>while、number guessing、for、break/continue、nested loops</td></tr><tr><td>04</td><td>#26–30、#34</td><td>methods、overload、scope、banking、dice roller、varargs</td></tr><tr><td>05</td><td>#31–33、#35–38</td><td>arrays、input/search、2D arrays、quiz、rock-paper-scissors、slot machine</td></tr><tr><td>06</td><td>#39–43、#47</td><td>OOP、constructors、overloaded constructors、object arrays、static、toString</td></tr><tr><td>07</td><td>#44–49</td><td>inheritance、super、overriding、abstraction、interfaces</td></tr><tr><td>08</td><td>#50–54</td><td>polymorphism、runtime polymorphism、getters/setters、aggregation、composition</td></tr><tr><td>09</td><td>#55–56</td><td>wrapper classes、ArrayList</td></tr><tr><td>10</td><td>#57–62</td><td>exception handling、write/read files、music player、hangman、dates &amp; times</td></tr><tr><td>11</td><td>#66–68</td><td>generics、HashMap、enums</td></tr><tr><td>12</td><td>#63–65、#69–71</td><td>anonymous classes、TimerTask、countdown、threading、multithreading、alarm clock</td></tr></tbody></table></div><p class="muted small">#34 varargs 与方法放在知识点 04；小节顺序在知识点 11–12 中按概念依赖微调：先学泛型集合，再学习需要对象和任务抽象的计时与线程。</p></section>
+
+<section class="lesson" id="l01"><div class="lesson-head"><div class="lesson-no">01</div><div><div class="eyebrow">Bro Code #1–6, #8–11</div><h2>变量、输入、运算、Math 与格式化输出 <a class="anchor" href="#l01">#</a></h2><p class="sub">从第一行 Java 到可交互的购物清单和复利计算。</p></div></div>
+<h3>1.1 Java 程序从哪里开始</h3><p>Java 源文件中的 <code>public class Main</code> 必须与文件名 <code>Main.java</code> 一致。JVM 从签名固定的 <code>public static void main(String[] args)</code> 开始执行。每条普通语句通常以分号结尾；花括号界定代码块。</p><pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java!");
+    }
+}</code></pre>
+<div class="python"><div>Python 对照<small>动态类型</small></div><div>Python 写 <code>age = 16</code>；Java 要先声明类型：<code>int age = 16;</code>。Java 编译器会在运行前发现许多类型错误。</div></div>
+<h3>1.2 基本类型、String 与常量</h3><div class="table-wrap"><table><thead><tr><th>Java 类型</th><th>示例</th><th>适用</th><th>常见坑</th></tr></thead><tbody><tr><td><code>int</code></td><td><code>int count = 12;</code></td><td>整数计数</td><td><code>5 / 2</code> 得到 2</td></tr><tr><td><code>long</code></td><td><code>long views = 3_000_000L;</code></td><td>大整数</td><td>literal 较大时加 <code>L</code></td></tr><tr><td><code>double</code></td><td><code>double price = 8.75;</code></td><td>一般小数计算</td><td>不是精确十进制货币</td></tr><tr><td><code>boolean</code></td><td><code>boolean ready = true;</code></td><td>真假状态</td><td>不是 <code>True</code>/<code>False</code></td></tr><tr><td><code>char</code></td><td><code>char grade = 'A';</code></td><td>单个字符</td><td>单引号</td></tr><tr><td><code>String</code></td><td><code>String name = "Mina";</code></td><td>文本对象</td><td>双引号</td></tr></tbody></table></div><p>不会改变的值用 <code>final</code> 表达意图，例如 <code>final double TAX_RATE = 0.08;</code>。变量名采用 lowerCamelCase，类名采用 UpperCamelCase，常量常用 UPPER_SNAKE_CASE。</p>
+<h3>1.3 Scanner 输入与换行陷阱</h3><p><code>Scanner</code> 从键盘读取数据。<code>nextInt()</code>/<code>nextDouble()</code> 不消费行末换行；紧接 <code>nextLine()</code> 时会读到空字符串。初学阶段最稳妥的策略，是整行读取后解析。</p><pre><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Your name: ");
+        String name = scanner.nextLine().trim();
+        System.out.print("Your age: ");
+        int age = Integer.parseInt(scanner.nextLine());
+        System.out.printf("Hello %s, next year you will be %d.%n", name, age + 1);
+    }
+}</code></pre>
+<h3>1.4 算术、随机数、Math 与 printf</h3><p>运算符包括 <code>+ - * / %</code>。整数参与除法时结果仍是整数；至少一边转为 <code>double</code> 才保留小数。<code>Math.pow</code>、<code>sqrt</code>、<code>abs</code>、<code>min/max</code>、<code>round</code> 处理常见数学运算；<code>Random</code> 用于可复现或不可预测的课堂小游戏。<code>printf</code> 的 <code>%s</code>、<code>%d</code>、<code>%.2f</code> 分别格式化文本、整数、两位小数。</p><div class="callout"><b>复利模型</b>若本金为 (P)、年利率为 (r)、每年计息 (n) 次、持续 (t) 年，则 (A=P(1+r/n)^{nt})。程序中的百分比要先除以 100。</div><pre><code class="language-java">import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        double principal = 1_000.0;
+        double annualRate = 4.5 / 100.0;
+        int years = 3;
+        double balance = principal * Math.pow(1 + annualRate / 12, 12 * years);
+
+        Random random = new Random(2026); // 固定 seed，输出可重复
+        int coupon = random.nextInt(5, 21);
+        System.out.printf("Balance: $%,.2f | Coupon: %d%%%n", balance, coupon);
+    }
+}</code></pre>
+<div class="callout warn"><b>常见错误</b><code>"Age: " + age + 1</code> 会先拼成文本，例如 <code>Age: 161</code>；应写 <code>"Age: " + (age + 1)</code>。输入非法数字会抛出异常，本章先保证按提示输入，异常处理在第 10 章系统学习。</div><details class="quiz"><summary>自检：<code>double average = 7 / 2;</code> 为什么得到 3.0？</summary><div>右侧先做整数除法得到 3，再转换为 double。写成 <code>7.0 / 2</code> 或 <code>(double) 7 / 2</code> 才得到 3.5。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 01</div><h3>迷你购物小票</h3><p>创建全新的 <code>Main.java</code>，读取商品名、单价、数量与折扣百分比，输出格式整齐的小票。这个练习与其他章节完全独立。</p><div class="spec"><div><b>输入</b>一行商品名、正数单价、正整数数量、0–100 的折扣率。</div><div><b>计算</b><code>subtotal = price × quantity</code>，再计算折扣额和实付金额。</div><div><b>输出</b>商品名、数量、小计、折扣和应付；货币统一两位小数。</div><div><b>限制</b>只使用变量、Scanner、算术、Math/printf；暂不使用循环和方法。</div></div><ul class="accept"><li>输入 <code>Notebook / 12.50 / 3 / 20</code> 时，小计 37.50、折扣 7.50、应付 30.00。</li><li>0% 和 100% 两个边界结果正确。</li><li>代码中没有硬编码最终答案，变量名能够表达含义。</li><li>能解释整数除法、<code>final</code> 与 <code>%.2f</code>。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="01" id="c01" type="checkbox"><label for="c01">知识点 01 已完成</label></div></section>
+
+<section class="lesson" id="l02"><div class="lesson-head"><div class="lesson-no">02</div><div><div class="eyebrow">Bro Code #7, #12–20</div><h2>String、条件判断、switch 与逻辑运算 <a class="anchor" href="#l02">#</a></h2><p class="sub">让程序根据文本与条件做出可解释的选择。</p></div></div>
+<h3>2.1 String 是对象</h3><p><code>String</code> 提供 <code>length()</code>、<code>charAt()</code>、<code>indexOf()</code>、<code>substring()</code>、<code>toUpperCase()</code>、<code>trim()</code>、<code>isEmpty()</code> 等方法。字符串不可变：这些方法返回新 String，不会原地修改原值。</p><pre><code class="language-java">String email = "  student@example.com  ".trim();
+int at = email.indexOf('@');
+String user = email.substring(0, at);
+String domain = email.substring(at + 1);
+System.out.println(user.toUpperCase());
+System.out.println(domain);</code></pre><div class="python"><div>关键差异<small>比较文本</small></div><div>Python 通常用 <code>name == "Ada"</code>；Java 必须用 <code>name.equals("Ada")</code> 或更安全的 <code>"Ada".equals(name)</code>。<code>==</code> 比较的可能是两个引用是否指向同一对象。</div></div>
+<h3>2.2 if / else if / else</h3><p>条件必须是 boolean。分支从上到下判断，只执行第一条为真的分支。范围判断用 <code>&amp;&amp;</code>，二选一用 <code>||</code>，取反用 <code>!</code>。短路求值使 <code>text != null &amp;&amp; !text.isBlank()</code> 安全：左侧为假时不会调用右侧。</p><pre><code class="language-java">int score = 84;
+String grade;
+if (score &lt; 0 || score &gt; 100) {
+    grade = "INVALID";
+} else if (score &gt;= 90) {
+    grade = "A";
+} else if (score &gt;= 80) {
+    grade = "B";
+} else if (score &gt;= 70) {
+    grade = "C";
+} else {
+    grade = "Needs improvement";
+}</code></pre><p>顺序非常重要：如果先判断 <code>score &gt;= 60</code>，95 分会在更宽的条件处提前命中。nested if 用于第二层依赖判断，但嵌套太深时应先验证非法输入或使用方法降低缩进。</p>
+<h3>2.3 三元运算符与增强 switch</h3><p>三元运算符 <code>condition ? valueWhenTrue : valueWhenFalse</code> 适合非常短的二选一，不适合嵌套复杂规则。现代 Java 的 switch expression 能直接产生值，并避免传统 switch 忘记 <code>break</code> 的问题。</p><pre><code class="language-java">String level = "MEDIUM";
+int bonus = switch (level.toUpperCase()) {
+    case "EASY"   -&gt; 5;
+    case "MEDIUM" -&gt; 10;
+    case "HARD"   -&gt; 20;
+    default       -&gt; 0;
+};
+String message = bonus &gt; 0 ? "Bonus unlocked" : "Unknown level";</code></pre>
+<h3>2.4 完整示例：温度转换器</h3><pre><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter temperature: ");
+        double value = Double.parseDouble(scanner.nextLine());
+        System.out.print("Convert to C or F: ");
+        String target = scanner.nextLine().trim().toUpperCase();
+
+        String result = switch (target) {
+            case "C" -&gt; String.format("%.1f °C", (value - 32) * 5 / 9);
+            case "F" -&gt; String.format("%.1f °F", value * 9 / 5 + 32);
+            default  -&gt; "Unknown target unit";
+        };
+        System.out.println(result);
+    }
+}</code></pre><div class="callout warn"><b>常见错误</b><code>0 &lt;= score &lt;= 100</code> 在 Java 中非法，必须写 <code>score &gt;= 0 &amp;&amp; score &lt;= 100</code>。字符串判断不要用 <code>==</code>；switch 的输入最好先 <code>trim().toUpperCase()</code> 统一格式。</div><details class="quiz"><summary>自检：为什么判断成绩要从最高档开始？</summary><div>因为 <code>else if</code> 只进入第一个成立分支。先写较宽的低门槛会吞掉后面更高等级的判断。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 02</div><h3>电影票价计算器</h3><p>根据年龄、是否学生、星期几和票种计算单张电影票价格。</p><div class="spec"><div><b>规则</b>基础票 12；未满 13 岁减 3；学生减 2；周二再减 1；VIP 加 5。</div><div><b>输入</b>年龄、学生 yes/no、星期名称、票种 REGULAR/VIP。</div><div><b>输出</b>逐项说明折扣/加价和最终价格；价格不得小于 0。</div><div><b>必须使用</b>String 方法、if/else、逻辑运算和一个 switch expression。</div></div><ul class="accept"><li>边界年龄 12、13 的结果分别正确。</li><li><code> yes </code>、<code>YES</code> 均可识别。</li><li>未知星期或票种给出明确提示，不静默计算。</li><li>至少手工测试普通成人、儿童学生周二、VIP 三组。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="02" id="c02" type="checkbox"><label for="c02">知识点 02 已完成</label></div></section>
+
+<section class="lesson" id="l03"><div class="lesson-head"><div class="lesson-no">03</div><div><div class="eyebrow">Bro Code #21–25</div><h2>while、for、break、continue 与嵌套循环 <a class="anchor" href="#l03">#</a></h2><p class="sub">重复执行，同时证明循环一定结束。</p></div></div>
+<h3>3.1 选择正确的循环</h3><div class="table-wrap"><table><thead><tr><th>结构</th><th>何时使用</th><th>典型问题</th></tr></thead><tbody><tr><td><code>while</code></td><td>不知道要重复多少次，以条件结束</td><td>输入验证、猜数字</td></tr><tr><td><code>do-while</code></td><td>至少执行一次再判断</td><td>菜单程序</td></tr><tr><td><code>for</code></td><td>次数或计数范围清楚</td><td>从 1 到 10、遍历索引</td></tr><tr><td>enhanced for</td><td>只需逐个读取数组/集合元素</td><td>求和、打印</td></tr></tbody></table></div><div class="python"><div>Python 对照<small>range</small></div><div>Python 的 <code>for i in range(0, 5)</code> 对应 Java 的 <code>for (int i = 0; i &lt; 5; i++)</code>。Java for 把初始化、继续条件和每轮更新写在同一行。</div></div>
+<h3>3.2 循环的四个问题</h3><ol class="tight"><li><b>初始化：</b>循环开始前状态是什么？</li><li><b>条件：</b>什么时候继续？</li><li><b>更新：</b>每轮怎样接近结束？</li><li><b>不变量：</b>每轮开始时始终为真的关系是什么？</li></ol><p>例如累计 (1+2+\cdots+n)：第 (i) 轮开始时，<code>sum</code> 保存 1 到 (i-1) 的和。循环结束时 (i=n+1)，所以 <code>sum</code> 就是目标。忘记更新变量会造成 infinite loop。</p>
+<h3>3.3 break、continue 与嵌套循环</h3><p><code>break</code> 立即离开最近一层循环；<code>continue</code> 跳过本轮剩余语句。它们适合明确的提前结束/过滤，但过多会让控制流难读。nested loops 中，外层每执行一次，内层完成一整轮；打印 (r\times c) 网格需要 (rc) 次输出。</p><pre><code class="language-java">for (int row = 1; row &lt;= 3; row++) {
+    for (int col = 1; col &lt;= 5; col++) {
+        if (row == 2 &amp;&amp; col == 3) {
+            System.out.print("X ");
+            continue;
+        }
+        System.out.print(". ");
+    }
+    System.out.println();
+}</code></pre>
+<h3>3.4 完整示例：猜数字</h3><pre><code class="language-java">import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int answer = new Random().nextInt(1, 101);
+        int attempts = 0;
+
+        while (true) {
+            System.out.print("Guess 1-100 (0 quits): ");
+            int guess = Integer.parseInt(scanner.nextLine());
+            if (guess == 0) {
+                System.out.println("Game ended.");
+                break;
+            }
+            if (guess &lt; 1 || guess &gt; 100) {
+                System.out.println("Out of range.");
+                continue;
+            }
+            attempts++;
+            if (guess == answer) {
+                System.out.printf("Correct in %d attempts!%n", attempts);
+                break;
+            }
+            System.out.println(guess &lt; answer ? "Too low" : "Too high");
+        }
+    }
+}</code></pre><div class="callout danger"><b>避免无法退出</b>每个 <code>while</code> 都应能回答“什么状态使条件变假？”使用 <code>while(true)</code> 时，必须清楚指出所有 <code>break</code> 路径。</div><details class="quiz"><summary>自检：两层循环各执行 (n) 次，一定是 (2n) 吗？</summary><div>若一层嵌套在另一层内部，总执行次数约为 (n\times n=n^2)；若两个循环前后并列，才约为 (n+n=2n)。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 03</div><h3>数字金字塔生成器</h3><p>读取 1–9 的高度，打印逐层递增的对称数字图案；非法输入反复要求重输。</p><div class="spec"><div><b>示例</b>高度 3 输出三行：前导空格后分别为 <code>1</code>、<code>121</code>、<code>12321</code>。</div><div><b>输入验证</b>用 while 保证高度在 1–9；输入 0 可退出。</div><div><b>生成</b>使用 nested for；一段递增、一段递减。</div><div><b>限制</b>不使用数组或 String.repeat 直接生成整行。</div></div><ul class="accept"><li>高度 1、3、9 的行数、空格和数字正确。</li><li>非法范围不会进入图案生成。</li><li>循环边界没有多一行或少一个数字。</li><li>能为每个循环说出初始化、条件和更新。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="03" id="c03" type="checkbox"><label for="c03">知识点 03 已完成</label></div></section>
+
+<section class="lesson" id="l04"><div class="lesson-head"><div class="lesson-no">04</div><div><div class="eyebrow">Bro Code #26–30, #34</div><h2>方法、参数、返回值、重载、作用域与 varargs <a class="anchor" href="#l04">#</a></h2><p class="sub">把一大段 main 拆成可以命名、测试和复用的小任务。</p></div></div>
+<h3>4.1 方法签名与返回值</h3><p>方法由访问修饰符、<code>static</code>（本章先使用）、返回类型、名称和参数列表组成。<code>void</code> 表示没有返回值；非 void 方法的所有正常路径都要返回正确类型。参数是方法内部的局部变量。</p><pre><code class="language-java">static double rectangleArea(double width, double height) {
+    if (width &lt; 0 || height &lt; 0) {
+        throw new IllegalArgumentException("dimensions must be non-negative");
+    }
+    return width * height;
+}</code></pre><div class="python"><div>Python 对照<small>类型与重载</small></div><div>Python 函数参数通常不声明类型，而且不能仅靠参数类型做传统重载。Java 编译器根据方法名与参数类型/数量选择 overload；返回类型本身不能区分重载。</div></div>
+<h3>4.2 Java 是 pass-by-value</h3><p>Java 总是按值传递。传 <code>int</code> 时复制整数；传对象时复制“引用这个值”。因此方法能借复制的引用修改同一个可变对象，却不能让调用者变量改为指向另一个对象。理解这一点可以避免把“对象引用按值传递”误说成 pass-by-reference。</p>
+<h3>4.3 重载、作用域与 varargs</h3><pre><code class="language-java">static int max(int a, int b) { return a &gt; b ? a : b; }
+static double max(double a, double b) { return a &gt; b ? a : b; }
+
+static int sum(int... values) {       // 调用方可以传 0 到多个 int
+    int total = 0;
+    for (int value : values) total += value;
+    return total;
+}</code></pre><p>重载要求参数列表不同；<code>sum(int... values)</code> 在方法内部把 varargs 当数组。varargs 必须是最后一个参数，一个方法最多一个。局部变量只在声明它的花括号范围内有效；不同作用域使用同名变量会造成 shadowing，初学时应避免。</p>
+<h3>4.4 完整示例：骰子统计</h3><pre><code class="language-java">import java.util.Random;
+
+public class Main {
+    static final Random RANDOM = new Random();
+
+    public static void main(String[] args) {
+        int[] rolls = rollDice(5, 6);
+        printRolls(rolls);
+        System.out.printf("Total=%d, average=%.2f%n", sum(rolls), average(rolls));
+    }
+
+    static int[] rollDice(int count, int sides) {
+        if (count &lt;= 0 || sides &lt; 2) throw new IllegalArgumentException();
+        int[] results = new int[count];
+        for (int i = 0; i &lt; count; i++) results[i] = RANDOM.nextInt(1, sides + 1);
+        return results;
+    }
+
+    static int sum(int... values) {
+        int total = 0;
+        for (int value : values) total += value;
+        return total;
+    }
+
+    static double average(int... values) {
+        return values.length == 0 ? 0.0 : (double) sum(values) / values.length;
+    }
+
+    static void printRolls(int[] values) {
+        for (int value : values) System.out.print("[" + value + "] ");
+        System.out.println();
+    }
+}</code></pre><div class="callout tip"><b>方法设计习惯</b>一个方法只做一件能被准确命名的事；计算方法尽量 return 数据，让 main 决定怎样输出。这样比在所有方法里直接 <code>println</code> 更容易测试。</div><details class="quiz"><summary>自检：能否定义 <code>int area(int,int)</code> 和 <code>double area(int,int)</code>？</summary><div>不能。调用时参数列表完全相同，编译器不能仅根据期望返回类型选择方法。必须改变参数类型/数量或方法名。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 04</div><h3>几何工具箱</h3><p>独立编写菜单程序，计算圆、矩形和三角形面积；main 只负责交互，数学计算放入方法。</p><div class="spec"><div><b>方法</b><code>circleArea(radius)</code>、<code>rectangleArea(w,h)</code>、<code>triangleArea(base,height)</code>。</div><div><b>重载</b>再定义一个 <code>rectangleArea(side)</code> 计算正方形。</div><div><b>验证</b>维度不得为负；非法时使用清楚的错误策略。</div><div><b>输出</b>统一用 <code>printResult(shape, area)</code> 格式化两位小数。</div></div><ul class="accept"><li>半径 2 的圆面积与 (4\pi) 在显示精度内一致。</li><li>矩形重载由参数列表区分，而不是返回类型。</li><li>计算方法没有 Scanner，也不依赖全局输入状态。</li><li>能解释局部作用域、static 与 pass-by-value。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="04" id="c04" type="checkbox"><label for="c04">知识点 04 已完成</label></div></section>
+<section class="lesson" id="l05"><div class="lesson-head"><div class="lesson-no">05</div><div><div class="eyebrow">Bro Code #31–33, #35–38</div><h2>数组、搜索、二维数组与小游戏数据 <a class="anchor" href="#l05">#</a></h2><p class="sub">用固定长度的同类型容器管理测验、棋盘和老虎机数据。</p></div></div>
+<h3>5.1 数组的类型、长度与索引</h3><p>数组在创建时确定长度，保存同一种类型，索引从 0 到 <code>length - 1</code>。<code>int[] scores = new int[5]</code> 会得到五个初始为 0 的槽位；array initializer 可直接写 <code>{...}</code>。访问越界会抛出 <code>ArrayIndexOutOfBoundsException</code>，不会像 Python 一样允许 <code>array[-1]</code> 访问最后一项。</p><pre><code class="language-java">int[] scores = {84, 91, 76, 95};
+int total = 0;
+for (int score : scores) total += score;
+double average = (double) total / scores.length;
+
+for (int i = 0; i &lt; scores.length; i++) {
+    System.out.printf("scores[%d] = %d%n", i, scores[i]);
+}</code></pre><div class="python"><div>Python 对照<small>固定长度</small></div><div>Python list 可自由 append 且可混合类型；Java array 长度固定、元素类型固定。需要动态长度时，第 9 章使用 <code>ArrayList</code>。</div></div>
+<h3>5.2 从输入填充与线性搜索</h3><p>填充数组时用索引循环，因为需要写入指定位置；只读遍历时 enhanced for 更清楚。无序数组中查找目标，最坏要查看全部 (n) 个元素，时间为 (O(n))。找到后立刻 <code>break</code>，并用 <code>-1</code> 表示“没有合法索引”。</p><pre><code class="language-java">static int indexOf(String[] items, String target) {
+    for (int i = 0; i &lt; items.length; i++) {
+        if (items[i].equalsIgnoreCase(target)) return i;
+    }
+    return -1;
+}</code></pre>
+<h3>5.3 二维数组</h3><p><code>char[][] board</code> 是“元素也是 char[] 的数组”，因此每一行理论上可以不同长度。规则矩阵通常保持 rectangular，但循环条件仍应写 <code>board[row].length</code> 而不是假定所有行都等于 <code>board[0].length</code>。</p><pre><code class="language-java">char[][] board = {
+    {'X', '.', 'O'},
+    {'.', 'X', '.'},
+    {'O', '.', 'X'}
+};
+for (int row = 0; row &lt; board.length; row++) {
+    for (int col = 0; col &lt; board[row].length; col++)
+        System.out.print(board[row][col] + " ");
+    System.out.println();
+}</code></pre>
+<h3>5.4 完整示例：三题测验</h3><pre><code class="language-java">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] questions = {
+            "Which keyword creates a subclass?",
+            "What is the first array index?",
+            "Which method compares String content?"
+        };
+        String[][] choices = {
+            {"A. extends", "B. import", "C. package"},
+            {"A. 1", "B. 0", "C. -1"},
+            {"A. ==", "B. compare", "C. equals"}
+        };
+        char[] answers = {'A', 'B', 'C'};
+        int score = 0;
+
+        for (int i = 0; i &lt; questions.length; i++) {
+            System.out.println("\n" + questions[i]);
+            for (String choice : choices[i]) System.out.println(choice);
+            char guess = scanner.nextLine().trim().toUpperCase().charAt(0);
+            if (guess == answers[i]) score++;
+        }
+        System.out.printf("Score: %d/%d%n", score, questions.length);
+    }
+}</code></pre><div class="callout warn"><b>并行数组的约束</b><code>questions[i]</code>、<code>choices[i]</code> 和 <code>answers[i]</code> 必须表示同一题，三个长度也必须一致。更大的程序应把一题建成对象；本章先用数组理解索引关系。</div><details class="quiz"><summary>自检：为什么循环条件通常是 <code>i &lt; array.length</code>？</summary><div>最后合法索引是 length−1。写 <code>i &lt;= length</code> 会多访问一次不存在的槽位。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 05</div><h3>教室座位预订图</h3><p>用 5×6 的二维 char 数组表示座位：<code>.</code> 可用、<code>X</code> 已订。用户输入行列预订一个座位。</p><div class="spec"><div><b>初始化</b>所有座位为 <code>.</code>，再预置三个已订位置。</div><div><b>交互</b>显示带行列编号的座位图，读取 row/column。</div><div><b>判断</b>先检查边界，再检查是否已订；成功时改为 <code>X</code>。</div><div><b>统计</b>遍历二维数组，输出剩余空位数。</div></div><ul class="accept"><li>四个角位置均能正确预订。</li><li>负数、超过边界和重复预订不会修改数组。</li><li>剩余数量与座位图一致。</li><li>代码没有使用六十个独立变量表示座位。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="05" id="c05" type="checkbox"><label for="c05">知识点 05 已完成</label></div></section>
+
+<section class="lesson" id="l06"><div class="lesson-head"><div class="lesson-no">06</div><div><div class="eyebrow">Bro Code #39–43, #47</div><h2>类、对象、构造器、static 与 toString <a class="anchor" href="#l06">#</a></h2><p class="sub">从“数据散落在变量里”转向“对象负责维护自己的状态和行为”。</p></div></div>
+<h3>6.1 类是蓝图，对象是实例</h3><p>类定义 fields 和 methods；<code>new</code> 调用 constructor 创建对象。每个对象有自己的 instance fields，而 static field 属于整个类、被所有实例共享。构造器名称与类相同且没有返回类型——连 <code>void</code> 也不能写。</p><pre><code class="language-java">class Book {
+    private String title;
+    private String author;
+    private int pages;
+    private static int bookCount = 0;
+
+    Book(String title, String author, int pages) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        bookCount++;
+    }
+
+    Book(String title, String author) { // overloaded constructor
+        this(title, author, 0);          // 必须是构造器第一条语句
+    }
+
+    boolean isLongRead() { return pages &gt;= 400; }
+    static int getBookCount() { return bookCount; }
+
+    @Override
+    public String toString() {
+        return "%s by %s (%d pages)".formatted(title, author, pages);
+    }
+}</code></pre><div class="python"><div>Python 对照<small>self 与 this</small></div><div>Python 用 <code>self.title</code>；Java 用 <code>this.title</code>。Java 方法签名不显式写 self/this 参数，编译器为 instance method 提供当前对象。</div></div>
+<h3>6.2 this、构造器重载与合法状态</h3><p><code>this.title = title</code> 左边是字段、右边是参数。多个构造器可以提供不同创建方式，但应把公共初始化委托给一个主要构造器，避免规则复制。对象创建完成时就应处于合法状态；页数为负应立即拒绝，而不是等到打印时再修补。</p>
+<h3>6.3 static 何时合理</h3><p><code>Math.sqrt</code> 不依赖某个 Math 对象，所以是 static。全班共享的对象计数也可 static。学生姓名、分数等每个对象不同的数据不能 static，否则创建第二个对象会覆盖所有对象看到的值。static method 没有某个具体 <code>this</code>，因此不能直接访问 instance field。</p>
+<h3>6.4 对象数组与 toString</h3><pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        Book[] shelf = {
+            new Book("The Hobbit", "J. R. R. Tolkien", 310),
+            new Book("Dune", "Frank Herbert", 412),
+            new Book("Short Stories", "Various")
+        };
+        for (Book book : shelf) {
+            System.out.println(book); // 自动调用 book.toString()
+        }
+        System.out.println("Books created: " + Book.getBookCount());
+    }
+}</code></pre><p>object array 的槽位保存对象引用。<code>new Book[3]</code> 只创建数组，三个元素初始是 <code>null</code>，并没有创建三本书。覆写 <code>toString</code> 让调试输出可读；它应描述对象，不负责打印到控制台。</p><div class="callout warn"><b>常见错误</b>构造器误写返回类型会变成普通方法；<code>static String name</code> 会错误共享姓名；打印未初始化的对象数组元素会得到 null，调用其方法则触发 <code>NullPointerException</code>。</div><details class="quiz"><summary>自检：<code>Book[] books = new Book[10]</code> 创建了多少个 Book 对象？</summary><div>零个 Book，只创建了一个能保存十个 Book 引用的数组。每个槽位目前都是 null。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 06</div><h3>StudentReport 类</h3><p>独立设计一个学生成绩报告对象，不读取或复用其他练习文件。</p><div class="spec"><div><b>字段</b>学生姓名、三门成绩；成绩保存在对象内部数组中。</div><div><b>构造器</b>一个接收三门成绩；一个只接收姓名并默认三门为 0。</div><div><b>方法</b><code>average()</code>、<code>hasPassedAll()</code>、<code>toString()</code>，以及 static 实例计数。</div><div><b>主程序</b>创建至少三个对象放入数组，逐个打印。</div></div><ul class="accept"><li>构造时拒绝小于 0 或大于 100 的成绩。</li><li>不同 StudentReport 的成绩互不覆盖。</li><li><code>toString</code> 返回文本而不是自行 println。</li><li>对象数组无意外 null，实例计数正确。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="06" id="c06" type="checkbox"><label for="c06">知识点 06 已完成</label></div></section>
+
+<section class="lesson" id="l07"><div class="lesson-head"><div class="lesson-no">07</div><div><div class="eyebrow">Bro Code #44–49</div><h2>继承、super、方法覆写、抽象类与接口 <a class="anchor" href="#l07">#</a></h2><p class="sub">表达“is-a”关系，并把共同规则与可变能力分开。</p></div></div>
+<h3>7.1 extends 与 is-a</h3><p>若 <code>Dog extends Animal</code>，Dog 是一种 Animal，可以继承可见字段/方法并覆写行为。继承应表达真正的 is-a，而不是只为了少写几行代码。Java 类只支持单继承，但一个类可以实现多个接口。</p><pre><code class="language-java">abstract class Shape {
+    private final String color;
+
+    protected Shape(String color) { this.color = color; }
+    public String color() { return color; }
+    public abstract double area();
+
+    public void describe() {
+        System.out.printf("%s shape, area %.2f%n", color, area());
+    }
+}
+
+class Circle extends Shape {
+    private final double radius;
+    Circle(String color, double radius) {
+        super(color);
+        if (radius &lt; 0) throw new IllegalArgumentException();
+        this.radius = radius;
+    }
+    @Override public double area() { return Math.PI * radius * radius; }
+}</code></pre>
+<h3>7.2 super 与构造顺序</h3><p>子类构造器必须先构造父类部分；<code>super(...)</code> 若显式出现，必须是第一条语句。<code>super.method()</code> 可调用父类版本。private 字段不能由子类直接访问，应通过 protected/public 方法维护封装，而不是为了继承把所有字段改成 public。</p>
+<h3>7.3 Override 不是 Overload</h3><div class="table-wrap"><table><thead><tr><th>概念</th><th>发生位置</th><th>方法签名</th><th>选择时机</th></tr></thead><tbody><tr><td>overload</td><td>同一类或继承层次</td><td>同名、参数列表不同</td><td>编译时根据参数选择</td></tr><tr><td>override</td><td>子类重新实现父类方法</td><td>参数相同、返回类型兼容</td><td>运行时根据实际对象选择</td></tr></tbody></table></div><p>始终写 <code>@Override</code>，让编译器检查拼写和签名。如果误写 <code>double areas()</code> 而不是 <code>area()</code>，注解会立即揭示它没有覆写。</p>
+<h3>7.4 抽象类与接口</h3><p>abstract class 可以保存状态、提供构造器与部分实现，但不能直接实例化。interface 更像能力契约：实现类承诺提供指定行为。下面的 <code>Printable</code> 可被 Shape 之外的其他类实现。</p><pre><code class="language-java">interface Printable {
+    String printableText();
+}
+
+class Rectangle extends Shape implements Printable {
+    private final double width, height;
+    Rectangle(String color, double width, double height) {
+        super(color); this.width = width; this.height = height;
+    }
+    @Override public double area() { return width * height; }
+    @Override public String printableText() {
+        return "Rectangle[" + color() + ", area=" + area() + "]";
+    }
+}</code></pre><div class="python"><div>Python 对照<small>显式契约</small></div><div>Python 常依赖 duck typing；Java interface 在编译时说明对象必须提供哪些方法。抽象类更适合共享状态/实现，接口更适合跨不同类表达共同能力。</div></div><div class="callout danger"><b>避免错误继承</b><code>Car extends Engine</code> 不合理：汽车不是发动机。汽车“拥有”发动机，应使用 composition；第 8 章专门处理。</div><details class="quiz"><summary>自检：为何 <code>Shape shape = new Shape(...)</code> 不合法？</summary><div>Shape 是抽象类，可能包含尚未实现的 abstract 方法。只能实例化完成这些方法的具体子类。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 07</div><h3>校园设备层次</h3><p>设计抽象 <code>Device</code>，子类为 <code>Laptop</code> 和 <code>Projector</code>，另定义 <code>Chargeable</code> 接口。</p><div class="spec"><div><b>Device</b>保存 assetId，提供具体 <code>showId()</code> 与抽象 <code>powerUseWatts()</code>。</div><div><b>子类</b>各有自己的字段、构造器和功耗实现，正确调用 <code>super</code>。</div><div><b>接口</b>Laptop 实现 <code>Chargeable.charge()</code>；Projector 不实现。</div><div><b>演示</b>创建对象，调用继承、覆写和接口方法。</div></div><ul class="accept"><li>不能直接 new Device。</li><li>两个子类的 <code>powerUseWatts()</code> 返回不同计算。</li><li>字段保持 private；子类不绕过父类校验。</li><li>能解释 is-a、override、abstract class 与 interface。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="07" id="c07" type="checkbox"><label for="c07">知识点 07 已完成</label></div></section>
+
+<section class="lesson" id="l08"><div class="lesson-head"><div class="lesson-no">08</div><div><div class="eyebrow">Bro Code #50–54</div><h2>多态、运行时选择、封装、聚合与组合 <a class="anchor" href="#l08">#</a></h2><p class="sub">用统一类型处理不同对象，同时清楚对象的拥有关系与生命周期。</p></div></div>
+<h3>8.1 多态：同一个接口，多种行为</h3><p>父类/接口变量可以引用子类对象。编译器根据变量的声明类型检查“能否调用”，JVM 根据实际对象选择被覆写的方法，这就是 runtime polymorphism。它让循环无需大量 <code>if(type == ...)</code>。</p><pre><code class="language-java">interface SoundMaker { void makeSound(); }
+class Dog implements SoundMaker {
+    @Override public void makeSound() { System.out.println("Woof"); }
+}
+class Cat implements SoundMaker {
+    @Override public void makeSound() { System.out.println("Meow"); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SoundMaker[] animals = {new Dog(), new Cat()};
+        for (SoundMaker animal : animals) animal.makeSound();
+    }
+}</code></pre><p>runtime polymorphism 也可由用户选择具体对象后统一使用。向下转型只有在确实需要子类特有功能、并确认 <code>instanceof</code> 后才做；频繁转型通常说明接口设计不完整。</p>
+<h3>8.2 getters、setters 与封装</h3><p>private 字段防止外部随意破坏状态。getter 不只是“公开字段的另一种写法”，setter 也不是每个字段必须拥有：不可变字段只给 getter；可变字段的 setter 负责验证。</p><pre><code class="language-java">class BankAccount {
+    private final String owner;
+    private double balance;
+    BankAccount(String owner, double opening) {
+        if (opening &lt; 0) throw new IllegalArgumentException();
+        this.owner = owner; this.balance = opening;
+    }
+    public String getOwner() { return owner; }
+    public double getBalance() { return balance; }
+    public void deposit(double amount) {
+        if (amount &lt;= 0) throw new IllegalArgumentException();
+        balance += amount;
+    }
+}</code></pre>
+<h3>8.3 Aggregation 与 composition</h3><div class="table-wrap"><table><thead><tr><th>关系</th><th>生命周期</th><th>例子</th><th>Java 表达</th></tr></thead><tbody><tr><td>aggregation</td><td>部分可独立存在，可被共享</td><td>Club 有 members；学生离开 club 仍存在</td><td>构造器接收已有对象/集合</td></tr><tr><td>composition</td><td>部分由整体创建和拥有</td><td>House 有 Room；Room 属于该 House</td><td>整体内部 <code>new</code> 并控制生命周期</td></tr></tbody></table></div><p>两者都是 has-a。不要仅凭 Java 代码里有没有 <code>new</code> 就下结论，关键是领域语义：部分是否能在整体之外有独立身份。</p>
+<h3>8.4 完整示例：订单、顾客和订单行</h3><pre><code class="language-java">class Customer { // 可独立于某张订单存在：aggregation
+    private final String name;
+    Customer(String name) { this.name = name; }
+    String name() { return name; }
+}
+class Order {
+    private final Customer customer;
+    private final Line[] lines = new Line[10];
+    private int size = 0;
+    private static class Line { // 由 Order 创建和拥有：composition
+        final String item; final double price;
+        Line(String item, double price) { this.item = item; this.price = price; }
+    }
+    Order(Customer customer) { this.customer = customer; }
+    void add(String item, double price) {
+        if (price &lt; 0) throw new IllegalArgumentException();
+        if (size == lines.length) throw new IllegalStateException("order is full");
+        lines[size++] = new Line(item, price);
+    }
+    double total() {
+        double sum = 0;
+        for (int i = 0; i &lt; size; i++) sum += lines[i].price;
+        return sum;
+    }
+    void print() {
+        System.out.printf("%s's order: %.2f%n", customer.name(), total());
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Customer maya = new Customer("Maya");
+        Order order = new Order(maya);
+        order.add("Notebook", 4.50); order.add("Pen", 1.20); order.print();
+    }
+}</code></pre><div class="callout warn"><b>示例范围</b>这里沿用已学过的固定数组保存最多十个订单行，不提前引入下一章的 ArrayList。重点是 Customer 与 Order 的独立生命周期、Line 的内部拥有关系。</div><details class="quiz"><summary>自检：为什么“所有字段都生成 setter”会削弱封装？</summary><div>外部可以绕过对象行为随意改状态，例如直接把余额设成负数。更好的接口是 deposit/withdraw 等表达规则的方法，不可变值不提供 setter。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 08</div><h3>多态交通票系统</h3><p>定义 <code>Fare</code> 接口，创建 <code>BusFare</code>、<code>TrainFare</code> 和 <code>FerryFare</code> 三种实现。</p><div class="spec"><div><b>接口</b><code>double price(int age)</code> 与 <code>String mode()</code>。</div><div><b>封装</b>每个实现的基础票价 private；构造时验证为非负。</div><div><b>多态</b>用 <code>Fare[]</code> 循环计算同一乘客的所有票价。</div><div><b>关系说明</b>另写 80–120 字解释一个 aggregation 和一个 composition 例子。</div></div><ul class="accept"><li>循环中没有根据类名写 if/else 选择价格算法。</li><li>儿童和成人边界规则明确并经过测试。</li><li>外部不能直接把基础票价改成非法值。</li><li>能区分声明类型、实际对象与运行时覆写。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="08" id="c08" type="checkbox"><label for="c08">知识点 08 已完成</label></div></section>
+<section class="lesson" id="l09"><div class="lesson-head"><div class="lesson-no">09</div><div><div class="eyebrow">Bro Code #55–56</div><h2>包装类、自动装箱与 ArrayList <a class="anchor" href="#l09">#</a></h2><p class="sub">当长度需要变化时，用泛型集合管理对象。</p></div></div>
+<h3>9.1 primitive 与 wrapper</h3><p>Java 的八种 primitive 有对应包装类：<code>int → Integer</code>、<code>double → Double</code>、<code>boolean → Boolean</code>、<code>char → Character</code> 等。集合的泛型参数必须是引用类型，所以写 <code>ArrayList&lt;Integer&gt;</code>，不能写 <code>ArrayList&lt;int&gt;</code>。编译器常自动完成 autoboxing/unboxing。</p><pre><code class="language-java">Integer boxed = 42;       // autoboxing: int → Integer
+int plain = boxed;        // unboxing: Integer → int
+int number = Integer.parseInt("2026");
+String text = Double.toString(3.14);
+boolean digit = Character.isDigit('7');</code></pre><div class="callout danger"><b>null unboxing</b><code>Integer value = null; int n = value;</code> 编译可以通过，但运行时会抛出 <code>NullPointerException</code>。wrapper 还应使用 <code>equals</code> 比较内容，不要依赖 <code>==</code> 的缓存细节。</div>
+<h3>9.2 ArrayList 的核心操作</h3><p><code>ArrayList&lt;E&gt;</code> 是可变长度的对象序列。它在内部使用数组，容量不足时自动扩容。<code>add</code>、<code>get</code>、<code>set</code>、<code>remove</code>、<code>contains</code>、<code>size</code> 是本章重点。尾部追加通常很快；在开头插入/删除要移动后续元素。</p><div class="table-wrap"><table><thead><tr><th>目的</th><th>写法</th><th>注意</th></tr></thead><tbody><tr><td>追加</td><td><code>names.add("Ava")</code></td><td>size 增加 1</td></tr><tr><td>读取</td><td><code>names.get(0)</code></td><td>仍从 0 开始</td></tr><tr><td>替换</td><td><code>names.set(0,"Mia")</code></td><td>不改变 size</td></tr><tr><td>按索引删除</td><td><code>names.remove(0)</code></td><td>后续左移</td></tr><tr><td>按对象删除</td><td><code>names.remove("Mia")</code></td><td>删除第一个相等项</td></tr></tbody></table></div>
+<h3>9.3 Integer 删除的歧义</h3><p><code>numbers.remove(2)</code> 会把 2 当作 index；若要删除值 2，写 <code>numbers.remove(Integer.valueOf(2))</code>。这是 method overloading 与 autoboxing 共同造成的典型初学者陷阱。</p>
+<h3>9.4 完整示例：动态待办清单</h3><pre><code class="language-java">import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList&lt;String&gt; tasks = new ArrayList&lt;&gt;();
+
+        while (true) {
+            System.out.print("add/list/remove/quit: ");
+            String command = scanner.nextLine().trim().toLowerCase();
+            switch (command) {
+                case "add" -&gt; {
+                    System.out.print("Task: ");
+                    String task = scanner.nextLine().trim();
+                    if (!task.isBlank()) tasks.add(task);
+                }
+                case "list" -&gt; {
+                    for (int i = 0; i &lt; tasks.size(); i++)
+                        System.out.printf("%d. %s%n", i + 1, tasks.get(i));
+                }
+                case "remove" -&gt; {
+                    System.out.print("Number: ");
+                    int index = Integer.parseInt(scanner.nextLine()) - 1;
+                    if (index &gt;= 0 &amp;&amp; index &lt; tasks.size()) tasks.remove(index);
+                }
+                case "quit" -&gt; { return; }
+                default -&gt; System.out.println("Unknown command");
+            }
+        }
+    }
+}</code></pre><div class="python"><div>Python 对照<small>list 与 ArrayList</small></div><div>两者都能动态增删，但 Java 必须声明元素类型，长度是 <code>size()</code>，索引读取用 <code>get(i)</code>。Java array 的长度则是字段 <code>length</code>。</div></div><details class="quiz"><summary>自检：<code>ArrayList&lt;Integer&gt; values; values.remove(1);</code> 删除什么？</summary><div>调用 <code>remove(int index)</code>，删除索引 1 的元素。删除数值 1 要传 <code>Integer.valueOf(1)</code>。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 09</div><h3>阅读词汇清单</h3><p>用户反复输入英文单词，支持 add、remove、search、list 和 quit；清单长度动态变化。</p><div class="spec"><div><b>容器</b>使用 <code>ArrayList&lt;String&gt;</code>，不预设最大词数。</div><div><b>规范化</b>保存前 <code>trim().toLowerCase()</code>，空词拒绝。</div><div><b>规则</b>不允许重复；删除不存在的词给出提示。</div><div><b>显示</b>按当前索引编号列出全部单词。</div></div><ul class="accept"><li><code>Java</code> 与 <code> java </code> 被视为重复。</li><li>空清单 list/remove 不崩溃。</li><li>添加、删除后 size 与显示一致。</li><li>能解释 wrapper、boxing 和 array/ArrayList 差异。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="09" id="c09" type="checkbox"><label for="c09">知识点 09 已完成</label></div></section>
+
+<section class="lesson" id="l10"><div class="lesson-head"><div class="lesson-no">10</div><div><div class="eyebrow">Bro Code #57–62</div><h2>异常处理、文件读写与日期时间 <a class="anchor" href="#l10">#</a></h2><p class="sub">让音乐清单、Hangman 词库和学习日志能够安全持久化。</p></div></div>
+<h3>10.1 异常不是普通分支的替代品</h3><p>exception 表示正常流程无法继续。checked exception（如某些 I/O 错误）要求捕获或声明；runtime exception 常表示编程错误或非法输入。<code>try</code> 包围可能失败的代码，<code>catch</code> 处理明确异常，<code>finally</code> 无论成功失败通常都会执行。</p><pre><code class="language-java">try {
+    int age = Integer.parseInt(text);
+    if (age &lt; 0) throw new IllegalArgumentException("age cannot be negative");
+} catch (NumberFormatException e) {
+    System.out.println("Please enter a whole number.");
+} catch (IllegalArgumentException e) {
+    System.out.println(e.getMessage());
+}</code></pre><p>catch 应尽量具体。空的 <code>catch (Exception e) {}</code> 会吞掉原因，让程序看似继续却处于错误状态。输入边界可以给用户重试；真正的文件损坏要清楚报告。</p>
+<h3>10.2 try-with-resources</h3><p>文件、Scanner 等资源使用后必须关闭。实现 <code>AutoCloseable</code> 的资源放在 try 括号里，会在退出时自动关闭，即使发生异常也不泄漏。</p><pre><code class="language-java">import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
+Path file = Path.of("notes.txt");
+Files.writeString(file, "Java arrays reviewed\n",
+        StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+String content = Files.readString(file);
+System.out.println(content);</code></pre><p>现代小文件可用 <code>Files.readString/writeString/readAllLines</code>；大文件应逐行流式处理，避免一次装入内存。路径相对当前 working directory，不一定等于源文件所在目录。字符编码建议显式使用 UTF-8。</p>
+<h3>10.3 日期时间 API</h3><p><code>LocalDate</code> 表示无时区日期，<code>LocalTime</code> 表示时间，<code>LocalDateTime</code> 表示本地日期时间；跨时区时用 <code>ZonedDateTime</code>/<code>Instant</code>。这些类不可变，调用 <code>plusDays</code> 会返回新对象。</p><pre><code class="language-java">import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+LocalDateTime now = LocalDateTime.now();
+DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+System.out.println(now.format(format));</code></pre>
+<h3>10.4 完整示例：带时间的学习日志</h3><pre><code class="language-java">import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Path log = Path.of("study-log.txt");
+        System.out.print("What did you study? ");
+        String topic = scanner.nextLine().trim();
+        if (topic.isBlank()) {
+            System.out.println("Nothing saved."); return;
+        }
+        String stamp = LocalDateTime.now().format(
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        try {
+            Files.writeString(log, stamp + " | " + topic + System.lineSeparator(),
+                    StandardCharsets.UTF_8,
+                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            System.out.println("Saved to " + log.toAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("Could not save log: " + e.getMessage());
+        }
+    }
+}</code></pre><div class="callout tip"><b>与视频项目的联系</b>music player 要捕获文件不存在或音频格式问题；Hangman 可从文本文件读取词库；日期时间可为存档加时间戳。本章只强调可靠 I/O，不要求音频库。</div><details class="quiz"><summary>自检：为什么相对路径找不到文件时要先打印 <code>toAbsolutePath()</code>？</summary><div>程序按 working directory 解析相对路径，而 IDE 的工作目录可能不是源代码目录。绝对路径能直接显示程序实际访问的位置。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 10</div><h3>每日心情日志</h3><p>把日期、1–5 分心情和一句备注追加到 UTF-8 CSV 文件，并支持读取全部历史。</p><div class="spec"><div><b>命令</b><code>add</code> 或 <code>view</code>；两个流程独立处理错误。</div><div><b>格式</b><code>yyyy-MM-dd,score,note</code>；note 中逗号替换为空格，防止列错位。</div><div><b>异常</b>分数解析失败、越界、文件不可读时给出明确提示。</div><div><b>资源</b>使用 <code>Path/Files</code> 和 UTF-8；不得空 catch。</div></div><ul class="accept"><li>连续 add 不覆盖旧记录。</li><li>不存在的文件在首次 add 时创建；view 时行为明确。</li><li>非法分数不会写入半行数据。</li><li>输出绝对路径，能够解释 checked exception。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="10" id="c10" type="checkbox"><label for="c10">知识点 10 已完成</label></div></section>
+
+<section class="lesson" id="l11"><div class="lesson-head"><div class="lesson-no">11</div><div><div class="eyebrow">Bro Code #66–68</div><h2>泛型、HashMap 与 enum <a class="anchor" href="#l11">#</a></h2><p class="sub">让类型安全的容器表达“键 → 值”关系和有限状态集合。</p></div></div>
+<h3>11.1 泛型在编译期保护类型</h3><p>泛型类或方法用类型参数（常见 <code>T</code>、<code>E</code>、<code>K</code>、<code>V</code>）描述“算法相同，数据类型由使用者决定”。它减少强制类型转换，并让错误更早出现。</p><pre><code class="language-java">class Box&lt;T&gt; {
+    private T value;
+    Box(T value) { this.value = value; }
+    T get() { return value; }
+    void set(T value) { this.value = value; }
+}
+
+static &lt;T&gt; void printArray(T[] items) {
+    for (T item : items) System.out.println(item);
+}</code></pre><p><code>Box&lt;String&gt;</code> 和 <code>Box&lt;Integer&gt;</code> 复用同一实现。泛型不能直接写 primitive 参数，所以使用 wrapper。不要使用 raw type <code>Box box</code>，它会丢失类型检查并产生警告。</p>
+<h3>11.2 HashMap 表示键值映射</h3><p><code>HashMap&lt;K,V&gt;</code> 用唯一 key 查找 value。常用方法有 <code>put</code>、<code>get</code>、<code>getOrDefault</code>、<code>containsKey</code>、<code>remove</code>、<code>keySet</code>、<code>entrySet</code>。它不保证按插入或字母顺序遍历；需要排序时另行排序或选择合适结构。</p><pre><code class="language-java">String sentence = "java is clear when java types are clear";
+HashMap&lt;String, Integer&gt; counts = new HashMap&lt;&gt;();
+for (String word : sentence.split(" ")) {
+    counts.put(word, counts.getOrDefault(word, 0) + 1);
+}
+for (var entry : counts.entrySet())
+    System.out.println(entry.getKey() + " = " + entry.getValue());</code></pre>
+<h3>11.3 enum 表达有限选择</h3><p>若状态只能是少数固定值，enum 比自由字符串安全：编译器阻止拼写错误，switch 还能检查枚举分支。enum 不只是常量列表，也能有字段、构造器和方法。</p><pre><code class="language-java">enum Priority {
+    LOW(1), MEDIUM(2), HIGH(3);
+    private final int weight;
+    Priority(int weight) { this.weight = weight; }
+    int weight() { return weight; }
+}</code></pre>
+<h3>11.4 完整示例：库存表</h3><pre><code class="language-java">import java.util.HashMap;
+import java.util.Map;
+
+enum StockState { OUT, LOW, OK }
+
+public class Main {
+    static StockState stateOf(int quantity) {
+        if (quantity == 0) return StockState.OUT;
+        if (quantity &lt; 5) return StockState.LOW;
+        return StockState.OK;
+    }
+    public static void main(String[] args) {
+        Map&lt;String, Integer&gt; stock = new HashMap&lt;&gt;();
+        stock.put("pen", 12); stock.put("notebook", 3); stock.put("eraser", 0);
+        stock.put("pen", stock.getOrDefault("pen", 0) + 5);
+
+        for (Map.Entry&lt;String, Integer&gt; entry : stock.entrySet()) {
+            System.out.printf("%-10s %3d  %s%n",
+                    entry.getKey(), entry.getValue(), stateOf(entry.getValue()));
+        }
+    }
+}</code></pre><div class="python"><div>Python 对照<small>dict 与 enum</small></div><div>HashMap 类似 Python dict，但 key/value 类型显式。Java enum 是真正的类型，不应退回字符串 <code>"HGIH"</code> 这类运行时才发现的拼写。</div></div><div class="callout warn"><b>不存在不等于值为 null</b><code>map.get(key)</code> 返回 null 可能表示 key 不存在，也可能 key 映射到 null。用 <code>containsKey</code> 区分，或者设计时不允许 null value。</div><details class="quiz"><summary>自检：HashMap 为什么不能直接承诺输出顺序？</summary><div>它按哈希 bucket 组织数据，遍历顺序是实现细节，可能随容量或内容改变。若输出必须稳定，要显式排序 key 或使用有顺序契约的结构。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 11</div><h3>课程成绩簿</h3><p>使用 HashMap 保存“学生名 → 等级枚举”，支持 add、find、remove 和 list。</p><div class="spec"><div><b>enum</b><code>Grade { A, B, C, D, E, U }</code>，提供 <code>isPass()</code>。</div><div><b>Map</b><code>HashMap&lt;String, Grade&gt;</code>；学生名统一 trim，空名拒绝。</div><div><b>输入</b>用 <code>Grade.valueOf(text.toUpperCase())</code>，捕获非法枚举值。</div><div><b>列表</b>复制 key 后按字母排序再输出，不能依赖 HashMap 顺序。</div></div><ul class="accept"><li>重复姓名采用明确的覆盖或拒绝策略，并在提示中说明。</li><li>不存在的学生不会造成 NullPointerException。</li><li>无论插入顺序如何，list 都按姓名稳定排序。</li><li>没有 raw generic 警告，能解释 K/V/T 的含义。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="11" id="c11" type="checkbox"><label for="c11">知识点 11 已完成</label></div></section>
+
+<section class="lesson" id="l12"><div class="lesson-head"><div class="lesson-no">12</div><div><div class="eyebrow">Bro Code #63–65, #69–71</div><h2>匿名类、TimerTask、线程与多线程 <a class="anchor" href="#l12">#</a></h2><p class="sub">让计时器和后台任务并发执行，同时避免共享状态错误。</p></div></div>
+<h3>12.1 匿名类是一次性实现</h3><p>若接口实现只使用一次，可以在创建对象的位置给出 anonymous class。它没有单独类名，适合短小回调；逻辑变长时应提取为命名类。lambda 是只有一个抽象方法的 functional interface 的更简洁写法。</p><pre><code class="language-java">Runnable namedByBehavior = new Runnable() {
+    @Override public void run() {
+        System.out.println("Anonymous task running");
+    }
+};
+Runnable lambdaTask = () -&gt; System.out.println("Lambda task running");</code></pre>
+<h3>12.2 Timer 与 TimerTask</h3><p><code>Timer</code> 安排任务在未来或周期执行，<code>TimerTask</code> 描述任务。经典 countdown 中，每秒递减一次，结束后必须 <code>cancel()</code>，否则非 daemon timer thread 可能让程序继续存活。Timer 使用单线程：某次任务卡住会推迟后续任务。</p><pre><code class="language-java">import java.util.Timer;
+import java.util.TimerTask;
+
+public class Main {
+    public static void main(String[] args) {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            int seconds = 5;
+            @Override public void run() {
+                if (seconds &gt; 0) System.out.println(seconds--);
+                else { System.out.println("Go!"); cancel(); timer.cancel(); }
+            }
+        }, 0, 1_000);
+    }
+}</code></pre>
+<h3>12.3 Thread、Runnable、start 与 join</h3><p>thread 是独立执行路径。调用 <code>run()</code> 只是在当前线程执行普通方法；调用 <code>start()</code> 才创建新执行路径。<code>join()</code> 让当前线程等待另一个线程结束。执行先后由 scheduler 决定，所以不要假设两个线程的打印顺序固定。</p><pre><code class="language-java">public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Thread homework = new Thread(() -&gt; doTask("Homework", 3));
+        Thread revision = new Thread(() -&gt; doTask("Revision", 3));
+        homework.start();
+        revision.start();
+        homework.join();
+        revision.join();
+        System.out.println("Both tasks finished.");
+    }
+    static void doTask(String name, int steps) {
+        for (int i = 1; i &lt;= steps; i++) {
+            System.out.printf("%s step %d%n", name, i);
+            try { Thread.sleep(200); }
+            catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); return;
+            }
+        }
+    }
+}</code></pre>
+<h3>12.4 共享可变状态与 race condition</h3><p><code>counter++</code> 不是不可分割的一步，而是读取、加一、写回。两个线程可能读到同一个旧值，导致更新丢失。优先让线程处理彼此独立的数据；必须共享计数时可用 <code>AtomicInteger</code>，更复杂临界区使用 <code>synchronized</code> 或更高层并发工具。</p><pre><code class="language-java">import java.util.concurrent.atomic.AtomicInteger;
+
+AtomicInteger completed = new AtomicInteger();
+Runnable work = () -&gt; {
+    // do work...
+    completed.incrementAndGet();
+};</code></pre><div class="callout danger"><b>线程停止策略</b>不要使用已经废弃且不安全的 <code>Thread.stop()</code>。用 interrupt 请求停止，在 catch 中恢复中断标志，并让任务安全返回。计时程序结束时取消 Timer。</div><div class="python"><div>Python 对照<small>调度与共享状态</small></div><div>两种语言的线程都不保证打印顺序。Java 的共享字段同样会发生 race condition；“这次跑对了”不是线程安全证明。</div></div><details class="quiz"><summary>自检：为什么调用 <code>thread.run()</code> 看起来能工作，却没有并发？</summary><div>run 是普通方法调用，仍在当前线程执行。只有 start 会让 JVM 建立新线程并随后调用其 run。</div></details>
+<div class="exercise"><div class="exercise-label">Independent Exercise 12</div><h3>学习休息提醒器</h3><p>制作一个短时 Pomodoro 演示：学习倒计时结束后发出休息提示，同时另一个线程打印三条鼓励语。</p><div class="spec"><div><b>计时</b>TimerTask 每秒更新倒计时；为测试用 5 秒，不要求真实 25 分钟。</div><div><b>并发</b>鼓励线程通过 Runnable/lambda 创建并用 <code>start()</code> 启动。</div><div><b>结束</b>倒计时结束 cancel Timer；main 使用 join 等待鼓励线程。</div><div><b>安全</b>若需要共享完成次数，使用 AtomicInteger；不使用 Thread.stop。</div></div><ul class="accept"><li>程序最终自行退出，不残留 Timer 使进程挂起。</li><li>鼓励语和倒计时顺序可以交错，程序不依赖固定顺序。</li><li>中断处理恢复 interrupt flag。</li><li>能解释 anonymous class、lambda、start/run、join 和 race condition。</li></ul></div><div class="check"><input class="lesson-check" data-lesson="12" id="c12" type="checkbox"><label for="c12">知识点 12 已完成</label></div></section>
+
+<section class="section" id="appendix"><h2>附录：运行方法、12 章验收与总测验 <a class="anchor" href="#appendix">#</a></h2>
+<h3>A.1 每个练习都是独立项目</h3><p>为避免“上一章没做完，下一章无法开始”，建议建立十二个平级目录。每个目录至少有自己的 <code>Main.java</code>；含多个类时可先写在同一个文件中，只有 Main 使用 public。完成后不复制上一章类，也不要求 Git 分支、科研日志或性能报告。</p><pre><code class="language-bash">bro-code-practice/
+├── 01-shopping-receipt/Main.java
+├── 02-movie-ticket/Main.java
+├── 03-number-pyramid/Main.java
+├── 04-geometry-toolkit/Main.java
+├── 05-seat-map/Main.java
+├── 06-student-report/Main.java
+├── 07-campus-devices/Main.java
+├── 08-transport-fares/Main.java
+├── 09-vocabulary-list/Main.java
+├── 10-mood-log/Main.java
+├── 11-grade-book/Main.java
+└── 12-study-timer/Main.java</code></pre>
+<h3>A.2 每章通用自查</h3><div class="grid4"><div class="card"><h4>Compile</h4><p><code>javac Main.java</code> 无错误和不理解的警告。</p></div><div class="card"><h4>Normal</h4><p>至少一个普通输入得到手算结果。</p></div><div class="card"><h4>Boundary</h4><p>测试最小值、最大值、空输入或空集合。</p></div><div class="card"><h4>Explain</h4><p>关闭教程后能逐段解释，不只会复制。</p></div></div>
+<h3>A.3 总测验</h3><ol class="tight"><li>为什么 <code>5 / 2</code> 与 <code>5.0 / 2</code> 不同？</li><li>比较两个 String 内容应使用什么？</li><li>如何说明一个 while loop 一定会终止？</li><li>overload 与 override 有何区别？</li><li>长度为 8 的数组最后索引是多少？</li><li><code>new Student[4]</code> 创建了几个 Student 对象？</li><li>接口与抽象类各适合什么情况？</li><li>aggregation 与 composition 的关键差别是什么？</li><li>为什么 <code>ArrayList&lt;int&gt;</code> 非法？</li><li>为什么不应写空的 catch block？</li><li>为什么 HashMap 遍历不能当作排序输出？</li><li><code>start()</code> 与 <code>run()</code> 有什么不同？</li></ol><details class="quiz"><summary>展开参考答案</summary><div>1 整数除法会截断；2 <code>equals</code>/<code>equalsIgnoreCase</code>；3 指出退出条件及每轮向它推进的更新；4 overload 参数列表不同、编译期选择，override 子类同签名重写、运行时选择；5 为 7；6 零个；7 抽象类适合共享状态/部分实现，接口适合能力契约；8 部分能否独立于整体存在；9 泛型只接受引用类型，应使用 Integer；10 会隐藏原因与错误状态；11 HashMap 没有该顺序契约；12 start 建立新线程，run 只是当前线程中的普通调用。</div></details>
+<h3>A.4 原课程来源与使用说明</h3><div class="grid2"><div class="card"><h4><a href="https://www.youtube.com/watch?v=xTtL8E4LzTQ">Bro Code · Java Full Course for free</a></h4><p>用户指定的原始视频。建议把本教程章节与视频对应小节结合学习。</p></div><div class="card"><h4><a href="https://www.classcentral.com/course/youtube-java-full-course-for-free-2025-417531">71-section syllabus listing</a></h4><p>用于交叉核对 12 小时、71 个小节的公开课程目录和主题覆盖。</p></div></div><div class="callout tip"><b>完成标准</b>12 个勾选框只是浏览器本地进度。真正完成意味着：不看答案从空白文件写出至少 10 道独立练习；能解释主要语法选择；遇到编译/运行错误时会阅读第一条有用错误信息并定位行号。</div><div class="foot">Independent study guide aligned to the public topic sequence of Bro Code's Java Full Course. Not affiliated with Bro Code. Examples and exercises are independently written. · Grade 11 edition 1.0 · 2026-09-03</div></section>
+</main></div></div>
+<script>(()=>{const app=document.getElementById('app'),checks=[...document.querySelectorAll('.lesson-check')],key='brocode-java-grade11-v1';const read=(k,d)=>{try{return localStorage.getItem(k)??d}catch{return d}},write=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};let saved={};try{saved=JSON.parse(read(key,'{}'))}catch{}function update(){const done=checks.filter(x=>x.checked).length,total=checks.length||12;document.getElementById('bar').style.width=`${100*done/total}%`;document.getElementById('progress').textContent=`${done} / ${total} 完成`;write(key,JSON.stringify(Object.fromEntries(checks.map(x=>[x.dataset.lesson,x.checked]))))}checks.forEach(x=>{x.checked=!!saved[x.dataset.lesson];x.addEventListener('change',update)});update();document.getElementById('menu').addEventListener('click',()=>innerWidth<=780?app.classList.toggle('mobile-open'):app.classList.toggle('collapsed'));document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>app.classList.remove('mobile-open')));const theme=document.getElementById('theme'),stored=read('brocode-theme','');if(stored)document.documentElement.dataset.theme=stored;theme.addEventListener('click',()=>{const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;write('brocode-theme',n)});const links=[...document.querySelectorAll('#nav a')],sections=[...document.querySelectorAll('main section[id]')],ob=new IntersectionObserver(es=>{const e=es.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(e)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))},{rootMargin:'-18% 0px -68% 0px',threshold:[0,.1,.5]});sections.forEach(s=>ob.observe(s));let states=[];addEventListener('beforeprint',()=>{states=[...document.querySelectorAll('details')].map(d=>d.open);document.querySelectorAll('details').forEach(d=>d.open=true)});addEventListener('afterprint',()=>document.querySelectorAll('details').forEach((d,i)=>d.open=states[i]))})();</script>
+</body>
+</html>
